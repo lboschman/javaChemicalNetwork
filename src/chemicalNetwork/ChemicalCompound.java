@@ -10,7 +10,11 @@ public class ChemicalCompound {
     }
 
     public void setAbundance(double abundance) {
-        this.abundance = abundance;
+        if (abundance > 0) {
+            this.abundance = abundance;
+        } else {
+            this.abundance = 0;
+        }
     }
 
 }
