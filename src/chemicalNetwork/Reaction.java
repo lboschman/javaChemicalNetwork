@@ -1,7 +1,5 @@
 package chemicalNetwork;
 
-import javax.print.DocFlavor;
-
 public class Reaction {
     ChemicalCompound[] reactants;
     ChemicalCompound[] products;
@@ -24,7 +22,7 @@ public class Reaction {
             rate *= compound.abundance;
         }
 
-        rate *= Math.exp(this.barrier / (boltzmannConstant * tempGas));
+        rate *= Math.exp(- this.barrier / (boltzmannConstant * tempGas));
 
         return rate;
 
