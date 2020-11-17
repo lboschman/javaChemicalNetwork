@@ -22,7 +22,7 @@ public class Reaction {
             rate *= compound.abundance;
         }
 
-        rate *= Math.exp(this.barrier / (boltzmannConstant * tempGas));
+        rate *= Math.exp(- this.barrier / (boltzmannConstant * tempGas));
 
         return rate;
 
