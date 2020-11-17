@@ -7,6 +7,9 @@ public class ChemicalNetwork {
     ArrayList<Reaction> reactions;
 
     public ChemicalNetwork( Reaction[] reactions){
+        this.reactions = new ArrayList<Reaction>();
+        this.compounds = new ArrayList<ChemicalCompound>();
+
         for (Reaction reaction: reactions) {
             this.add_reaction(reaction);
         }
