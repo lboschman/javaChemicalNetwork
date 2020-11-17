@@ -1,7 +1,5 @@
 package chemicalNetwork;
 
-import javax.print.DocFlavor;
-
 public class Reaction {
     ChemicalCompound[] reactants;
     ChemicalCompound[] products;
