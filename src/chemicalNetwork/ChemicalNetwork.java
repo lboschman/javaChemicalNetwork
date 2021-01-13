@@ -7,8 +7,8 @@ public class ChemicalNetwork {
     ArrayList<Reaction> reactions;
 
     public ChemicalNetwork( Reaction[] reactions){
-        this.reactions = new ArrayList<Reaction>();
-        this.compounds = new ArrayList<ChemicalCompound>();
+        this.reactions = new ArrayList<>();
+        this.compounds = new ArrayList<>();
 
         for (Reaction reaction: reactions) {
             this.add_reaction(reaction);
@@ -38,7 +38,7 @@ public class ChemicalNetwork {
 
 //    Define a method to get a list of all the compound names in the chemical network
     public ArrayList<String> get_compound_names(){
-        ArrayList<String> names = new ArrayList<String>();
+        ArrayList<String> names = new ArrayList<>();
 
         for (ChemicalCompound compound: this.compounds) {
             names.add(compound.name);
