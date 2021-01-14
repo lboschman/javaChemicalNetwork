@@ -14,4 +14,24 @@ public class TestReactionStringParser {
         Assertions.assertEquals(parser.sigmaIndex, 32);
         Assertions.assertEquals(parser.barrierIndex, 40);
     }
+
+    @Test
+    public void testUpdatedIndices(){
+        int newReactantsIndex = 2;
+        int newProductsIndex = 2;
+        int newSigmaIndex = 2;
+        int newBarrierIndex = 2;
+
+        ReactionStringParser parser = new ReactionStringParser.Builder()
+                .withProductsIndex(newProductsIndex)
+                .withReactantsIndex(newReactantsIndex)
+                .withSigmaIndex(newSigmaIndex)
+                .withBarrierIndex(newBarrierIndex).build();
+
+        Assertions.assertEquals(parser.reactantsIndex, newReactantsIndex);
+        Assertions.assertEquals(parser.productsIndex, newProductsIndex);
+        Assertions.assertEquals(parser.sigmaIndex, newSigmaIndex);
+        Assertions.assertEquals(parser.barrierIndex, newBarrierIndex);
+
+    }
 }
