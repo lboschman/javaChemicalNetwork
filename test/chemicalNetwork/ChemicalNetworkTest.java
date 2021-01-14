@@ -16,9 +16,12 @@ public class ChemicalNetworkTest {
         Reaction reaction1 = new Reaction(reactants, products, 1., 0.);
         Reaction reaction2 = new Reaction(products, reactants, 0.5, 0.);
 
-        Reaction[] reactions = {reaction1, reaction2};
 
-        return new ChemicalNetwork(reactions);
+        ChemicalNetwork network = new ChemicalNetwork();
+
+        network.add_reaction(reaction1);
+        network.add_reaction(reaction2);
+        return network;
     }
 
     @Test

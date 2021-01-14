@@ -6,13 +6,10 @@ public class ChemicalNetwork {
     ArrayList<ChemicalCompound> compounds;
     ArrayList<Reaction> reactions;
 
-    public ChemicalNetwork( Reaction[] reactions){
+    public ChemicalNetwork(){
         this.reactions = new ArrayList<>();
         this.compounds = new ArrayList<>();
 
-        for (Reaction reaction: reactions) {
-            this.add_reaction(reaction);
-        }
     }
 
     public void add_reaction( Reaction reaction ) {
