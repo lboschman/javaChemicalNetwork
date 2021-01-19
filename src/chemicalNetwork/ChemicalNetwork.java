@@ -13,6 +13,17 @@ public class ChemicalNetwork {
         this.compounds = new HashMap<>();
     }
 
+    public Set<String> get_compound_names(){
+        return this.compounds.keySet();
+    }
+
+    private void check_add_compound(String compound_name) {
+        if (!this.compounds.containsKey(compound_name)) {
+            ChemicalCompound new_compound = new ChemicalCompound(compound_name, 0.0);
+            this.compounds.put(compound_name, new_compound);
+        }
+    }
+
     public void add_reaction( Reaction reaction ) {
         // Add the reaction to the system
         this.reactions.add(reaction);
@@ -32,10 +43,6 @@ public class ChemicalNetwork {
             }
         }
 
-    }
-
-    public Set<String> get_compound_names(){
-        return this.compounds.keySet();
     }
 
     // Add a reaction from the basic building blocks
@@ -62,10 +69,6 @@ public class ChemicalNetwork {
             compoundProducts.add(this.compounds.get(product));
         }
 
-//        ChemicalCompound[] reactantsArray = compoundReactants.toArray(ChemicalCompound[]::new);
-//        ChemicalCompound[] productsArray = compoundProducts.toArray(ChemicalCompound[]::new);
-
-
         Reaction new_reaction = new Reaction(
                 compoundReactants.toArray(ChemicalCompound[]::new),
                 compoundProducts.toArray(ChemicalCompound[]::new),
@@ -74,13 +77,6 @@ public class ChemicalNetwork {
 
         this.reactions.add(new_reaction);
 
-    }
-
-    private void check_add_compound(String compound_name) {
-        if (!this.compounds.containsKey(compound_name)) {
-            ChemicalCompound new_compound = new ChemicalCompound(compound_name, 0.0);
-            this.compounds.put(compound_name, new_compound);
-        }
     }
 
 }
