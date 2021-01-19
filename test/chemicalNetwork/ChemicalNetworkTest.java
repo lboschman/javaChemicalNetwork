@@ -2,6 +2,7 @@ package chemicalNetwork;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import java.util.ArrayList;
 
 public class ChemicalNetworkTest {
     public ChemicalNetwork makeNetwork(){
@@ -37,4 +38,27 @@ public class ChemicalNetworkTest {
     }
 
     /*Add here tests to check the chemical network*/
+
+    @Test
+    public void stringReactionTest(){
+        ChemicalNetwork network = new ChemicalNetwork();
+
+        ArrayList<String> reactantList = new ArrayList<>();
+        ArrayList<String> productList = new ArrayList<>();
+        reactantList.add("Sugar");
+        reactantList.add("Oxygen");
+        productList.add("CO2");
+        productList.add("Energy");
+
+        network.add_reaction(reactantList, productList, 0.25, 0.0);
+
+        Assertions.assertTrue(
+                network.get_compound_names().contains("Sugar")
+                        && network.get_compound_names().contains("Oxygen")
+                        && network.get_compound_names().contains("CO2")
+                        && network.get_compound_names().contains("Energy")
+
+        );
+
+    }
 }
