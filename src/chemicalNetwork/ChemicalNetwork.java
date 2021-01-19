@@ -13,18 +13,18 @@ public class ChemicalNetwork {
         this.compounds = new HashMap<>();
     }
 
-    public Set<String> get_compound_names(){
+    public Set<String> getCompoundNames(){
         return this.compounds.keySet();
     }
 
-    private void check_add_compound(String compound_name) {
+    private void checkAddCompound(String compound_name) {
         if (!this.compounds.containsKey(compound_name)) {
             ChemicalCompound new_compound = new ChemicalCompound(compound_name, 0.0);
             this.compounds.put(compound_name, new_compound);
         }
     }
 
-    public void add_reaction( Reaction reaction ) {
+    public void addReaction(Reaction reaction ) {
         // Add the reaction to the system
         this.reactions.add(reaction);
 
@@ -46,15 +46,15 @@ public class ChemicalNetwork {
     }
 
     // Add a reaction from the basic building blocks
-    public void add_reaction( ArrayList<String> reactants, ArrayList<String> products, double sigma, double barrier ) {
+    public void addReaction(ArrayList<String> reactants, ArrayList<String> products, double sigma, double barrier ) {
         // Check if reactants already exist, if not, create them
         for (String reactant: reactants){
-            check_add_compound(reactant);
+            checkAddCompound(reactant);
         }
 
         // Check if products already exist, if not, create them
         for (String product: products) {
-            check_add_compound(product);
+            checkAddCompound(product);
         }
 
         // Make reaction from the available parameters, and add it to

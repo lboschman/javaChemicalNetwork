@@ -20,20 +20,20 @@ public class ChemicalNetworkTest {
 
         ChemicalNetwork network = new ChemicalNetwork();
 
-        network.add_reaction(reaction1);
-        network.add_reaction(reaction2);
+        network.addReaction(reaction1);
+        network.addReaction(reaction2);
         return network;
     }
 
     @Test
     public void compoundsTest(){
         ChemicalNetwork network = makeNetwork();
-        Assertions.assertEquals(network.get_compound_names().size(), 3);
+        Assertions.assertEquals(network.getCompoundNames().size(), 3);
 
         Assertions.assertTrue(
-                network.get_compound_names().contains("C")
-                && network.get_compound_names().contains("O")
-                && network.get_compound_names().contains("CO2")
+                network.getCompoundNames().contains("C")
+                && network.getCompoundNames().contains("O")
+                && network.getCompoundNames().contains("CO2")
         );
     }
 
@@ -50,13 +50,13 @@ public class ChemicalNetworkTest {
         productList.add("CO2");
         productList.add("Energy");
 
-        network.add_reaction(reactantList, productList, 0.25, 0.0);
+        network.addReaction(reactantList, productList, 0.25, 0.0);
 
         Assertions.assertTrue(
-                network.get_compound_names().contains("Sugar")
-                        && network.get_compound_names().contains("Oxygen")
-                        && network.get_compound_names().contains("CO2")
-                        && network.get_compound_names().contains("Energy")
+                network.getCompoundNames().contains("Sugar")
+                        && network.getCompoundNames().contains("Oxygen")
+                        && network.getCompoundNames().contains("CO2")
+                        && network.getCompoundNames().contains("Energy")
 
         );
 
