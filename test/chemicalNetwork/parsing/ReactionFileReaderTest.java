@@ -3,12 +3,37 @@ package chemicalNetwork.parsing;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ReactionFileReaderTest {
 
     @Test
     void parseFile() {
+        String filename = "test/chemicalNetwork/parsing/testReactions.txt";
+        ReactionFileReader reader = new ReactionFileReader();
+        ArrayList<ParseResult> result = reader.parseFile(filename);
+
+        ParseResult firstResult = result.get(0);
+        Assertions.assertTrue(
+                firstResult.getReactants().contains("C")
+                && firstResult.getReactants().contains("O2")
+                && firstResult.getProducts().contains("CO2")
+        );
+        Assertions.assertEquals(firstResult.getSigma(), 1.0);
+        Assertions.assertEquals(firstResult.getBarrier(), 0.25);
+
+        ParseResult secondResult = result.get(1);
+        Assertions.assertTrue(
+                secondResult.getReactants().contains("CH4")
+                && secondResult.getReactants().contains("O2")
+                && secondResult.getProducts().contains("CO2")
+                && secondResult.getProducts().contains("H2O")
+        );
+        Assertions.assertEquals(secondResult.getSigma(), 1.25);
+        Assertions.assertEquals(secondResult.getBarrier(), 2.3);
     }
 
     @Test

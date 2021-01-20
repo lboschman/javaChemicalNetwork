@@ -31,23 +31,40 @@ public class ReactionFileReader {
 
     }
 
-    public void parseFile(String filename) {
+    public ArrayList<ParseResult> parseFile(String filename) {
         // First try and read the file
+        Scanner myReader = null;
+
         try {
             File reactionFile = new File(filename);
-            Scanner myReader = new Scanner(reactionFile);
+            myReader = new Scanner(reactionFile);
         } catch (FileNotFoundException e) {
             System.out.println("File not found!");
             e.printStackTrace();
         }
 
         // Parse the header
+        assert myReader != null;
+        String header = myReader.nextLine();
+        HashMap<String, Integer> parsingIndices = this.parseHeading(header);
 
         // Make a ReactionStringParser with the appropriate properties
+        ReactionStringParser parser = new ReactionStringParser.Builder()
+                .withReactantsIndex(parsingIndices.get("reactants"))
+                .withProductsIndex(parsingIndices.get("products"))
+                .withSigmaIndex(parsingIndices.get("sigma"))
+                .withBarrierIndex(parsingIndices.get("barrier"))
+                .build();
 
         // Parse the reaction strings
+        ArrayList<ParseResult> results = new ArrayList<>();
 
+        while (myReader.hasNextLine()) {
+            String reaction = myReader.nextLine();
+            results.add(parser.parseReactionString(reaction));
+        }
 
+        return results;
     }
 
 
