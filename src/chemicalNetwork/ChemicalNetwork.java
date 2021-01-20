@@ -1,5 +1,7 @@
 package chemicalNetwork;
 
+import chemicalNetwork.parsing.ParseResult;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
@@ -76,6 +78,16 @@ public class ChemicalNetwork {
         );
 
         this.reactions.add(new_reaction);
+
+    }
+
+    public void addReaction(ParseResult result) {
+        ArrayList<String> reactants = result.getReactants();
+        ArrayList<String> products = result.getProducts();
+        double sigma = result.getSigma();
+        double barrier = result.getBarrier();
+
+        this.addReaction(reactants, products, sigma, barrier);
 
     }
 

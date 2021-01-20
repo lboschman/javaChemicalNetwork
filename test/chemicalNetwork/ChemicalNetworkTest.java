@@ -1,5 +1,7 @@
 package chemicalNetwork;
 
+import chemicalNetwork.parsing.ParseResult;
+import chemicalNetwork.parsing.ReactionStringParser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
@@ -40,7 +42,7 @@ public class ChemicalNetworkTest {
     /*Add here tests to check the chemical network*/
 
     @Test
-    public void stringReactionTest(){
+    public void stringAddReactionTest(){
         ChemicalNetwork network = new ChemicalNetwork();
 
         ArrayList<String> reactantList = new ArrayList<>();
@@ -60,5 +62,21 @@ public class ChemicalNetworkTest {
 
         );
 
+    }
+
+    @Test
+    public void parseResultAddReactionTest(){
+        ChemicalNetwork network = new ChemicalNetwork();
+        String reactionString = "C O2            CO2             2.2     0.3";
+        ReactionStringParser parser = new ReactionStringParser.Builder().build();
+        ParseResult parseResult = parser.parseReactionString(reactionString);
+
+        network.addReaction(parseResult);
+
+        Assertions.assertTrue(
+                network.getCompoundNames().contains("C")
+                && network.getCompoundNames().contains("O2")
+                && network.getCompoundNames().contains("CO2")
+        );
     }
 }
