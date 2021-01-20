@@ -34,4 +34,14 @@ public class ChemicalCompoundTest {
 
     }
 
+    @Test
+    void testSetAbundanceToZero() {
+        ChemicalCompound carbon = new ChemicalCompound("C", 0.01);
+        Assertions.assertEquals(carbon.abundance, 0.01);
+
+        carbon.setAbundance();
+        Assertions.assertEquals(carbon.abundance, 0.0);
+
+    }
+
 }
