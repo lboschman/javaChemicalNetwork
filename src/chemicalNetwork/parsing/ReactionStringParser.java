@@ -1,6 +1,4 @@
-package chemicalNetwork;
-
-import chemicalNetwork.parsing.ParseResult;
+package chemicalNetwork.parsing;
 
 import java.util.ArrayList;
 import java.util.Arrays;
