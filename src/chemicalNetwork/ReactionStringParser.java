@@ -1,5 +1,9 @@
 package chemicalNetwork;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+
 public class ReactionStringParser {
     // declare variables
     int reactantsIndex;
@@ -55,6 +59,40 @@ public class ReactionStringParser {
     }
 
     private ReactionStringParser() {
+
+    }
+
+    private ArrayList<String> parseComponentString(String componentString) {
+        String[] strList = componentString.split("\\s+");
+        return new ArrayList<>(Arrays.asList(strList));
+    }
+
+
+    public ParseResult parseReactionString(String reactionString) {
+        ParseResult reactionComponents = new ParseResult();
+
+//        First retrieve the reactants
+        ArrayList<String> reactants = this.parseComponentString(
+                reactionString.substring(this.reactantsIndex, this.productsIndex)
+        );
+        ArrayList<String> products = this.parseComponentString(
+                reactionString.substring(this.productsIndex, this.sigmaIndex)
+        );
+
+        double sigma = Double.parseDouble(
+                reactionString.substring(this.sigmaIndex, this.barrierIndex).trim()
+        );
+
+        double barrier = Double.parseDouble(
+                reactionString.substring(this.barrierIndex).trim()
+        );
+
+        reactionComponents.setReactants(reactants);
+        reactionComponents.setProducts(products);
+        reactionComponents.setSigma(sigma);
+        reactionComponents.setBarrier(barrier);
+
+        return reactionComponents;
 
     }
 
