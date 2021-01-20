@@ -1,5 +1,6 @@
-package chemicalNetwork;
+package chemicalNetwork.parsing;
 
+import chemicalNetwork.parsing.ParseResult;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

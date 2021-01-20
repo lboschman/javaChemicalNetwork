@@ -1,8 +1,9 @@
 package chemicalNetwork;
 
+import chemicalNetwork.parsing.ParseResult;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 
 public class ReactionStringParser {
     // declare variables
