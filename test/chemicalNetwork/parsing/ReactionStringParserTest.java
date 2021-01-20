@@ -3,7 +3,7 @@ package chemicalNetwork.parsing;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class TestReactionStringParser {
+public class ReactionStringParserTest {
 
     @Test
     public void testDefaultIndices(){
