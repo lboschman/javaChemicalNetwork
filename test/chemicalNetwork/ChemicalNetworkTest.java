@@ -111,19 +111,19 @@ public class ChemicalNetworkTest {
 
         // First check the first reaction
         Reaction firstReaction = reactions.get(0);
-        ChemicalCompound[] firstReactants = firstReaction.reactants;
+        ChemicalCompound[] firstReactants = firstReaction.getReactants();
         Assertions.assertEquals(firstReactants[0].name, "C");
         Assertions.assertEquals(firstReactants[1].name, "O2");
 
-        Assertions.assertEquals(firstReaction.products[0].name, "CO2");
-        Assertions.assertEquals(firstReaction.sigma, 1.0);
-        Assertions.assertEquals(firstReaction.barrier, 0.25);
+        Assertions.assertEquals(firstReaction.getProducts()[0].name, "CO2");
+        Assertions.assertEquals(firstReaction.getSigma(), 1.0);
+        Assertions.assertEquals(firstReaction.getBarrier(), 0.25);
 
         // Now check the second reaction
         Reaction secondReaction = reactions.get(1);
 
         // Check that all the reactants have been included
-        ChemicalCompound[] secondReactants = secondReaction.reactants;
+        ChemicalCompound[] secondReactants = secondReaction.getReactants();
         Assertions.assertEquals(secondReactants.length, 4);
         Assertions.assertEquals(secondReactants[0].name, "CH4");
         Assertions.assertEquals(secondReactants[1].name, "O2");
@@ -131,14 +131,14 @@ public class ChemicalNetworkTest {
         Assertions.assertEquals(secondReactants[1], secondReactants[3]);
 
         // Perform the same check for the products
-        ChemicalCompound[] secondProducts = secondReaction.products;
+        ChemicalCompound[] secondProducts = secondReaction.getProducts();
         Assertions.assertEquals(secondProducts[0].name, "CO2");
         Assertions.assertEquals(secondProducts[1].name, "H2O");
         Assertions.assertEquals(secondProducts[1], secondProducts[2]);
 
         // Check the numerical constants
-        Assertions.assertEquals(secondReaction.sigma, 1.25);
-        Assertions.assertEquals(secondReaction.barrier, 2.3);
+        Assertions.assertEquals(secondReaction.getSigma(), 1.25);
+        Assertions.assertEquals(secondReaction.getBarrier(), 2.3);
 
 
 

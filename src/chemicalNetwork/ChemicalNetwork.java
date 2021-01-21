@@ -32,14 +32,14 @@ public class ChemicalNetwork {
         this.reactions.add(reaction);
 
         // For every compound in the reactants, check if it is already present in the network.
-        for (ChemicalCompound compound: reaction.reactants) {
+        for (ChemicalCompound compound: reaction.getReactants()) {
             // If the compound is not present in the network, then add it
             if (!this.compounds.containsKey(compound.name) ) {
                 this.compounds.put(compound.name, compound);
             }
         }
         // Repeat for the reaction products
-        for (ChemicalCompound compound: reaction.reactants) {
+        for (ChemicalCompound compound: reaction.getReactants()) {
             // If the compound is not present in the network, then add it
             if (!this.compounds.containsKey(compound.name) ) {
                 this.compounds.put(compound.name, compound);
