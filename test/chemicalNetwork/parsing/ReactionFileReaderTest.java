@@ -12,7 +12,7 @@ class ReactionFileReaderTest {
 
     @Test
     void parseFile() {
-        String filename = "test/chemicalNetwork/parsing/testReactions.txt";
+        String filename = "test/resources/testReactions.txt";
         ReactionFileReader reader = new ReactionFileReader();
         ArrayList<ParseResult> result = reader.parseFile(filename);
 

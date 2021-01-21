@@ -84,7 +84,7 @@ public class ChemicalNetworkTest {
     @Test
     public void readFromFileCompoundsTest(){
         ChemicalNetwork network = new ChemicalNetwork();
-        String fileName = "test/chemicalNetwork/parsing/testReactions.txt";
+        String fileName = "test/resources/testReactions.txt";
         network.readFromFile(fileName);
 
         Set<String> compoundNames = network.getCompoundNames();
@@ -103,7 +103,7 @@ public class ChemicalNetworkTest {
     @Test
     public void readFromFileReactionsTest(){
         ChemicalNetwork network = new ChemicalNetwork();
-        String fileName = "test/chemicalNetwork/parsing/testReactions.txt";
+        String fileName = "test/resources/testReactions.txt";
         network.readFromFile(fileName);
 
         ArrayList<Reaction> reactions = network.reactions;
