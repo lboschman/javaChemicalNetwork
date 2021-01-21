@@ -19,6 +19,34 @@ public class ChemicalCompound {
         this.setAbundance(compoundAbundance);
     }
 
+
+    /**
+     * Name of the compound.
+     *
+     * @return the compounds name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Set a new name for the compound.
+     *
+     * @param name the new name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Concentration of the compound.
+     *
+     * @return the abundance
+     */
+    public double getAbundance() {
+        return abundance;
+    }
+
     /**
      * Reset the abundance to 0.
      */
@@ -40,15 +68,4 @@ public class ChemicalCompound {
         }
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getAbundance() {
-        return abundance;
-    }
 }
