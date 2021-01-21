@@ -112,10 +112,10 @@ public class ChemicalNetworkTest {
         // First check the first reaction
         Reaction firstReaction = reactions.get(0);
         ChemicalCompound[] firstReactants = firstReaction.getReactants();
-        Assertions.assertEquals(firstReactants[0].name, "C");
-        Assertions.assertEquals(firstReactants[1].name, "O2");
+        Assertions.assertEquals(firstReactants[0].getName(), "C");
+        Assertions.assertEquals(firstReactants[1].getName(), "O2");
 
-        Assertions.assertEquals(firstReaction.getProducts()[0].name, "CO2");
+        Assertions.assertEquals(firstReaction.getProducts()[0].getName(), "CO2");
         Assertions.assertEquals(firstReaction.getSigma(), 1.0);
         Assertions.assertEquals(firstReaction.getBarrier(), 0.25);
 
@@ -125,15 +125,15 @@ public class ChemicalNetworkTest {
         // Check that all the reactants have been included
         ChemicalCompound[] secondReactants = secondReaction.getReactants();
         Assertions.assertEquals(secondReactants.length, 4);
-        Assertions.assertEquals(secondReactants[0].name, "CH4");
-        Assertions.assertEquals(secondReactants[1].name, "O2");
+        Assertions.assertEquals(secondReactants[0].getName(), "CH4");
+        Assertions.assertEquals(secondReactants[1].getName(), "O2");
         Assertions.assertEquals(secondReactants[1], secondReactants[2]);
         Assertions.assertEquals(secondReactants[1], secondReactants[3]);
 
         // Perform the same check for the products
         ChemicalCompound[] secondProducts = secondReaction.getProducts();
-        Assertions.assertEquals(secondProducts[0].name, "CO2");
-        Assertions.assertEquals(secondProducts[1].name, "H2O");
+        Assertions.assertEquals(secondProducts[0].getName(), "CO2");
+        Assertions.assertEquals(secondProducts[1].getName(), "H2O");
         Assertions.assertEquals(secondProducts[1], secondProducts[2]);
 
         // Check the numerical constants

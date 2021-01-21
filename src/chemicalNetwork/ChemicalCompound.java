@@ -5,9 +5,8 @@ package chemicalNetwork;
  */
 
 public class ChemicalCompound {
-    /* The compound has both a name and an abundance (concentration) */
-    String name;
-    double abundance;
+    private String name;
+    private double abundance;
 
     /**
      * A chemical compound
@@ -16,8 +15,8 @@ public class ChemicalCompound {
      * @param compoundAbundance initial abundance or concentration of the compound
      */
     public ChemicalCompound(String compoundName, double compoundAbundance) {
-        this.name = compoundName;
-        this.abundance = compoundAbundance;
+        this.setName(compoundName);
+        this.setAbundance(compoundAbundance);
     }
 
     /**
@@ -41,4 +40,15 @@ public class ChemicalCompound {
         }
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getAbundance() {
+        return abundance;
+    }
 }

@@ -8,8 +8,8 @@ public class ChemicalCompoundTest {
     public void testProperties(){
         /* First make and check the basic object*/
         ChemicalCompound carbon = new ChemicalCompound("C", 0.01);
-        Assertions.assertEquals(carbon.abundance, 0.01);
-        Assertions.assertEquals(carbon.name, "C");
+        Assertions.assertEquals(carbon.getAbundance(), 0.01);
+        Assertions.assertEquals(carbon.getName(), "C");
     }
 
     @Test
@@ -20,7 +20,7 @@ public class ChemicalCompoundTest {
         /* Change the abundance, and check the change.*/
         double new_abundance = 12.01;
         carbon.setAbundance(new_abundance);
-        Assertions.assertEquals(carbon.abundance, new_abundance);
+        Assertions.assertEquals(carbon.getAbundance(), new_abundance);
     }
 
     @Test
@@ -30,17 +30,17 @@ public class ChemicalCompoundTest {
 
         /* Check that a negative abundance results in a 0 abundance*/
         carbon.setAbundance(-2.5);
-        Assertions.assertEquals(carbon.abundance, 0);
+        Assertions.assertEquals(carbon.getAbundance(), 0);
 
     }
 
     @Test
     void testSetAbundanceToZero() {
         ChemicalCompound carbon = new ChemicalCompound("C", 0.01);
-        Assertions.assertEquals(carbon.abundance, 0.01);
+        Assertions.assertEquals(carbon.getAbundance(), 0.01);
 
         carbon.setAbundance();
-        Assertions.assertEquals(carbon.abundance, 0.0);
+        Assertions.assertEquals(carbon.getAbundance(), 0.0);
 
     }
 

@@ -48,7 +48,7 @@ public class Reaction {
         double rate = this.getSigma();
 
         for (ChemicalCompound compound: this.getReactants()) {
-            rate *= compound.abundance;
+            rate *= compound.getAbundance();
         }
         /* Calculate reaction rate according to Arrhenius kinetics */
         rate *= Math.exp(-this.getBarrier() / (getBoltzmannConstant() * tempGas));
