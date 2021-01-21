@@ -1,6 +1,7 @@
 package chemicalNetwork;
 
 import chemicalNetwork.parsing.ParseResult;
+import chemicalNetwork.parsing.ReactionFileReader;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -89,6 +90,15 @@ public class ChemicalNetwork {
 
         this.addReaction(reactants, products, sigma, barrier);
 
+    }
+
+    public void readFromFile(String filename) {
+        ReactionFileReader fileReader = new ReactionFileReader();
+        ArrayList<ParseResult> parseResults = fileReader.parseFile(filename);
+
+        for (ParseResult result: parseResults) {
+            this.addReaction(result);
+        }
     }
 
 }
