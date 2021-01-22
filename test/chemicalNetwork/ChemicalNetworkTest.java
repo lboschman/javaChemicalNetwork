@@ -106,7 +106,7 @@ public class ChemicalNetworkTest {
         String fileName = "test/resources/testReactions.txt";
         network.readFromFile(fileName);
 
-        ArrayList<Reaction> reactions = network.reactions;
+        ArrayList<Reaction> reactions = network.getReactions();
         Assertions.assertEquals(reactions.size(), 2);
 
         // First check the first reaction

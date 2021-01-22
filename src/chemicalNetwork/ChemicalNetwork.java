@@ -8,20 +8,20 @@ import java.util.HashMap;
 import java.util.Set;
 
 public class ChemicalNetwork {
-    ArrayList<Reaction> reactions;
-    HashMap<String, ChemicalCompound> compounds;
+    private ArrayList<Reaction> reactions;
+    private HashMap<String, ChemicalCompound> compounds;
 
     public ChemicalNetwork(){
-        this.reactions = new ArrayList<>();
-        this.compounds = new HashMap<>();
+        this.setCompounds(new HashMap<>());
+        this.setReactions(new ArrayList<>());
     }
 
     public Set<String> getCompoundNames(){
-        return this.compounds.keySet();
+        return this.getCompounds().keySet();
     }
 
     private void checkAddCompound(String compound_name) {
-        if (!this.compounds.containsKey(compound_name)) {
+        if (!this.getCompounds().containsKey(compound_name)) {
             ChemicalCompound new_compound = new ChemicalCompound(compound_name, 0.0);
             this.compounds.put(compound_name, new_compound);
         }
@@ -34,15 +34,15 @@ public class ChemicalNetwork {
         // For every compound in the reactants, check if it is already present in the network.
         for (ChemicalCompound compound: reaction.getReactants()) {
             // If the compound is not present in the network, then add it
-            if (!this.compounds.containsKey(compound.getName()) ) {
-                this.compounds.put(compound.getName(), compound);
+            if (!this.getCompounds().containsKey(compound.getName()) ) {
+                this.getCompounds().put(compound.getName(), compound);
             }
         }
         // Repeat for the reaction products
         for (ChemicalCompound compound: reaction.getReactants()) {
             // If the compound is not present in the network, then add it
-            if (!this.compounds.containsKey(compound.getName()) ) {
-                this.compounds.put(compound.getName(), compound);
+            if (!this.getCompounds().containsKey(compound.getName()) ) {
+                this.getCompounds().put(compound.getName(), compound);
             }
         }
 
@@ -65,11 +65,11 @@ public class ChemicalNetwork {
         ArrayList<ChemicalCompound> compoundProducts = new ArrayList<>();
 
         for (String reactant: reactants) {
-            compoundReactants.add(this.compounds.get(reactant));
+            compoundReactants.add(this.getCompounds().get(reactant));
         }
 
         for (String product: products) {
-            compoundProducts.add(this.compounds.get(product));
+            compoundProducts.add(this.getCompounds().get(product));
         }
 
         Reaction new_reaction = new Reaction(
@@ -78,7 +78,7 @@ public class ChemicalNetwork {
                 sigma, barrier
         );
 
-        this.reactions.add(new_reaction);
+        this.getReactions().add(new_reaction);
 
     }
 
@@ -101,4 +101,19 @@ public class ChemicalNetwork {
         }
     }
 
+    public ArrayList<Reaction> getReactions() {
+        return reactions;
+    }
+
+    private void setReactions(ArrayList<Reaction> reactions) {
+        this.reactions = reactions;
+    }
+
+    public HashMap<String, ChemicalCompound> getCompounds() {
+        return compounds;
+    }
+
+    private void setCompounds(HashMap<String, ChemicalCompound> compounds) {
+        this.compounds = compounds;
+    }
 }
